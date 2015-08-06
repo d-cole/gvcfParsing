@@ -161,8 +161,8 @@ class gfilterMethods():
         altReads = int(mutantSample.altReads)
         refReads = int(mutantSample.refReads)
  
-#        binomResult = "TRUE" in str((subprocess.Popen("~/spirodela/r/binom.r " + str(altReads)\
-#             +" "+str(refReads),shell=True,stdout=subprocess.PIPE)).communicate()[0])
+        binomResult = "TRUE" in str((subprocess.Popen("~/spirodela/r/binom.r " + str(altReads)\
+             +" "+str(refReads),shell=True,stdout=subprocess.PIPE)).communicate()[0])
         #print binomResult
         
-        return self.validSampleDP(i,samples[i].DP) #and binomResult
+        return self.validSampleDP(i,samples[i].DP) and binomResult

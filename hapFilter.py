@@ -19,20 +19,20 @@ if __name__ == "__main__":
                 fline = gvcfLine(raw_line)
                 try:
                     if fline.isDataLine:
-                        if len(fline.alt) == 1 and len(fline.ref) == 1:
-                            outFile.write(raw_line)
-                        else:
-                            print raw_line
-#                        if CC_filter.siteFiltering(fline):
-#                            CC_samplePass = CC_filter.sampleFiltering(fline.CC_samples) 
-#                            GP_samplePass = GP_filter.sampleFiltering(fline.GP_samples)
-#    
-#                            if CC_samplePass ^ GP_samplePass:
-#                                 outFile.write(raw_line)
-#                            else:
-#                                print raw_line
+#                        if len(fline.alt) == 1 and len(fline.ref) == 1:
+#                            outFile.write(raw_line)
 #                        else:
 #                            print raw_line
+                        if CC_filter.siteFiltering(fline):
+                            CC_samplePass = CC_filter.sampleFiltering(fline.CC_samples) 
+                            GP_samplePass = GP_filter.sampleFiltering(fline.GP_samples)
+    
+                            if CC_samplePass ^ GP_samplePass:
+                                 outFile.write(raw_line)
+                            else:
+                                print raw_line
+                        else:
+                            print raw_line
                     else:
                         outFile.write(raw_line) #Add header information
 
